@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kumalija Institute of Science and Technology - Education, innovation and skills development.">
+<title>KIST | Kumalija Institute of Science and Technology</title>
+
+<style>
+:root {
+  --navy: #102b50;
+  --blue: #1769aa;
+  --gold: #f2b632;
+  --light: #f3f7fc;
+  --white: #fff;
+  --text: #28364a;
+  --muted: #68778b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; color: var(--text); line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+.container { width: min(1150px, 92%); margin: auto; }
+section { padding: 75px 0; scroll-margin-top: 85px; }
+h2, h3 { color: var(--navy); line-height: 1.3; }
+.section-title { text-align: center; margin: 0 auto 38px; max-width: 720px; }
+.section-title span { color: var(--blue); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; }
+.section-title h2 { font-size: clamp(28px, 4vw, 38px); margin: 10px 0; }
+.section-title p { color: var(--muted); }
+.topbar { background: var(--navy); color: white; padding: 8px 0; font-size: 12px; }
+.topbar .container { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+header { position: sticky; top: 0; z-index: 100; background: white; box-shadow: 0 3px 15px #102b5015; }
+.navbar { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.logo { background: var(--navy); color: var(--gold); border: 3px solid var(--gold); width: 50px; height: 50px; display: grid; place-items: center; border-radius: 10px; font-weight: 900; }
+.brand strong { display: block; color: var(--navy); font-size: 14px; line-height: 1.3; }
+.brand small { color: var(--muted); font-size: 10px; letter-spacing: 1px; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 15px; }
+.nav-links a { font-size: 12px; font-weight: bold; }
+.nav-links a:hover { color: var(--blue); }
+.auth-buttons { display: flex; gap: 7px; }
+.btn { display: inline-block; border: 0; border-radius: 6px; padding: 11px 17px; font-weight: bold; font-size: 13px; }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-blue { background: var(--blue); color: white; }
+.btn-outline { border: 1px solid white; color: white; background: transparent; }
+.menu-toggle { display: none; border: 0; padding: 8px 12px; background: var(--navy); color: white; border-radius: 5px; font-size: 20px; }
+.hero { min-height: 570px; display: flex; align-items: center; color: white; background: linear-gradient(90deg,#071b35ed,#071b3580),url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=85") center/cover; }
+.hero-content { max-width: 760px; padding: 80px 0; }
+.eyebrow { color: var(--gold); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 13px; }
+.hero h1 { color: white; font-size: clamp(36px, 5.5vw, 60px); line-height: 1.12; margin: 18px 0; }
+.hero p { color: #edf3fb; max-width: 650px; margin-bottom: 25px; }
+.notice { padding: 13px 0; background: var(--gold); color: var(--navy); font-weight: bold; font-size: 14px; }
+.about-grid, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center; }
+.about-img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; }
+.about-copy p { color: var(--muted); margin: 12px 0; }
+.values, .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.value { background: var(--light); padding: 18px; border-radius: 8px; border-bottom: 3px solid var(--gold); }
+.value p { font-size: 13px; }
+.soft { background: var(--light); }
+.card { background: white; border-radius: 10px; overflow: hidden; border: 1px solid #e2e9f2; box-shadow: 0 5px 20px #102b500b; }
+.card img { width: 100%; height: 190px; object-fit: cover; }
+.card-body { padding: 22px; }
+.card-body h3 { margin-bottom: 8px; font-size: 19px; }
+.card-body p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+.text-link { color: var(--blue); font-size: 13px; font-weight: bold; }
+.department { text-align: center; border: 1px solid #e0e7f0; padding: 25px 15px; border-radius: 10px; }
+.department .icon { font-size: 33px; }
+.department h3 { font-size: 16px; margin: 8px 0; }
+.department p { font-size: 13px; color: var(--muted); }
+.banner { text-align: center; color: white; background: linear-gradient(90deg,#102b50ed,#102b50cf),url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1500&q=85") center/cover; }
+.banner h2 { color: white; font-size: clamp(28px,4vw,40px); margin: 12px 0; }
+.banner p { max-width: 720px; margin: 0 auto 20px; color: #edf3fb; }
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.step { background: var(--light); border-radius: 10px; padding: 22px; }
+.step b { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--gold); margin-bottom: 12px; }
+.step p { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; }
+.gallery img { width: 100%; height: 230px; object-fit: cover; border-radius: 9px; }
+.news-date { color: var(--blue); font-size: 12px; font-weight: bold; }
+.contact-box { background: white; border: 1px solid #e1e8f1; padding: 28px; border-radius: 10px; }
+.contact-box h3 { margin-bottom: 15px; }
+.contact-item { margin: 15px 0; color: var(--muted); overflow-wrap: anywhere; }
+.contact-item strong { display: block; color: var(--navy); }
+label { display: block; margin: 12px 0 5px; font-size: 13px; font-weight: bold; }
+input, select, textarea { width: 100%; padding: 12px; border: 1px solid #d4deeb; border-radius: 6px; background: white; }
+textarea { min-height: 115px; resize: vertical; }
+.form-message { margin-top: 12px; font-size: 13px; overflow-wrap: anywhere; }
+footer { background: #091d36; color: white; padding: 45px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+footer h3, footer h4 { color: var(--gold); margin-bottom: 12px; }
+footer p, footer li { color: #d0dbea; font-size: 13px; }
+footer ul { list-style: none; }
+footer li { margin: 7px 0; }
+footer a:hover { color: var(--gold); }
+.socials { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.copyright { text-align: center; border-top: 1px solid #ffffff25; padding-top: 18px; font-size: 12px; color: #c5d0df; }
+
+/* Register and login windows */
+.modal { display: none; position: fixed; inset: 0; z-index: 500; background: #071b35c9; padding: 18px; overflow-y: auto; align-items: center; justify-content: center; }
+.modal.show { display: flex; }
+.modal-box { background: white; width: min(440px,100%); padding: 28px; border-radius: 12px; position: relative; }
+.modal-box h2 { margin-bottom: 6px; }
+.modal-box > p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.close-modal { position: absolute; right: 15px; top: 10px; border: 0; background: transparent; font-size: 27px; color: var(--navy); }
+.modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+.modal-actions button { flex: 1; }
+.switch-auth { margin-top: 17px; font-size: 13px; text-align: center; }
+.switch-auth button { background: none; border: 0; color: var(--blue); font-weight: bold; }
+#authMessage { color: var(--blue); overflow-wrap: anywhere; }
+@media(max-width:1050px) {
+  .menu-toggle { display: block; }
+  .navbar { flex-wrap: wrap; padding: 12px 0; }
+  .nav-links { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; padding: 15px 0; }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 5px; font-size: 14px; }
+  .auth-buttons { margin-left: auto; }
+  .navbar { gap: 10px; }
+  .footer-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:650px) {
+  .topbar .container { justify-content: center; text-align: center; }
+  .brand strong { font-size: 11px; }
+  .brand small { font-size: 8px; }
+  .logo { width: 42px; height: 42px; font-size: 13px; }
+  .auth-buttons .btn { padding: 9px; font-size: 11px; }
+  section { padding: 52px 0; }
+  .hero { min-height: 480px; }
+  .about-grid, .contact-grid, .grid-3, .values, .steps, .gallery, .footer-grid { grid-template-columns: 1fr; }
+  .about-img { height: 260px; }
+  .card img, .gallery img { height: 220px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span>Welcome to KIST | Knowledge • Innovation • Excellence</span>
+    <span>Official contact details to be added</span>
+  </div>
+</div>
+
+<header>
+  <nav class="navbar container">
+    <a href="#home" class="brand">
+      <div class="logo">KIST</div>
+      <div>
+        <strong>KUMALIJA INSTITUTE</strong>
+        <small>OF SCIENCE AND TECHNOLOGY</small>
+      </div>
+    </a>
+
+    <div class="auth-buttons">
+      <button class="btn btn-blue" onclick="openAuth('login')">Login</button>
+      <button class="btn btn-gold" onclick="openAuth('register')">Register</button>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#programmes">Programmes</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#departments">Departments</a></li>
+      <li><a href="#student-life">Student Life</a></li>
+      <li><a href="#news">News & Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- 1. HOME -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <span class="eyebrow">Welcome to KIST</span>
+      <h1>Empowering Minds Through Science and Technology</h1>
+      <p>
+        Discover opportunities for learning, creativity, innovation and
+        professional development at Kumalija Institute of Science and Technology.
+      </p>
+      <a class="btn btn-gold" href="#programmes">Explore Programmes</a>
+      <a class="btn btn-outline" href="#about">Discover Our Institute</a>
+    </div>
+  </section>
+
+  <div class="notice">
+    <div class="container">
+      IMPORTANT: Contact the institute for verified programme and admission information.
+    </div>
+  </div>
+
+  <!-- 2. ABOUT US -->
+  <section id="about">
+    <div class="container about-grid">
+      <img class="about-img"
+        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85"
+        alt="Students working together">
+
+      <div class="about-copy">
+        <span class="eyebrow">About Our Institute</span>
+        <h2>Building Knowledge for a Better Future</h2>
+        <p>
+          Kumalija Institute of Science and Technology (KIST) is presented
+          here as an institution focused on learning, scientific thinking,
+          technology and skills development. Replace this text with the
+          institute's verified history and official profile.
+        </p>
+        <div class="values">
+          <div class="value">
+            <h3>Our Vision</h3>
+            <p>To become a recognised centre of knowledge and innovation.</p>
+          </div>
+          <div class="value">
+            <h3>Our Mission</h3>
+            <p>To promote learning, practical skills and responsible innovation.</p>
+          </div>
+          <div class="value">
+            <h3>Our Goals</h3>
+            <p>To encourage excellence, creativity and lifelong learning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ACADEMIC PROGRAMMES -->
+  <section class="soft" id="programmes">
+    <div class="container">
+      <div class="section-title">
+        <span>Learning Opportunities</span>
+        <h2>Academic Programmes</h2>
+        <p>
+          These are illustrative subject areas, not confirmed KIST courses.
+          Replace them with programmes officially offered by the institute.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Computer technology">
+          <div class="card-body">
+            <h3>Information Technology</h3>
+            <p>Computing, digital systems and technology-based problem solving.</p>
+            <a class="text-link" href="#contact">Enquire Now →</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80" alt="Engineering workshop">
+          <div class="card-body">
+            <h3>Engineering and Technology</h3>
+            <p>Technical design, engineering principles and applied learning.</p>
+            <a class="text-link" href="#contact">Enquire Now →</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Scientific laboratory">
+          <div class="card-body">
+            <h3>Applied Sciences</h3>
+            <p>Scientific inquiry, experimentation and practical problem solving.</p>
+            <a class="text-link" href="#contact">Enquire Now →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ADMISSIONS -->
+  <section class="banner" id="admissions">
+    <div class="container">
+      <span class="eyebrow">Admissions</span>
+      <h2>Start Your Educational Journey</h2>
+      <p>
+        Contact the admissions office for official entry qualifications,
+        application procedures, tuition fees, available programmes and deadlines.
+      </p>
+      <a href="#contact" class="btn btn-gold">Contact Admissions</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <span>How to Apply</span>
+        <h2>Admission Process</h2>
+        <p>Follow the official instructions provided by the institute.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><b>01</b><h3>Choose a Programme</h3><p>Explore available programmes and select your area of interest.</p></div>
+        <div class="step"><b>02</b><h3>Check Requirements</h3><p>Confirm qualifications and required application documents.</p></div>
+        <div class="step"><b>03</b><h3>Apply</h3><p>Submit your application through the official admissions process.</p></div>
+        <div class="step"><b>04</b><h3>Receive Updates</h3><p>Follow official instructions about your application outcome.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DEPARTMENTS -->
+  <section class="soft" id="departments">
+    <div class="container">
+      <div class="section-title">
+        <span>Academic Structure</span>
+        <h2>Our Departments</h2>
+        <p>Replace these example departments with the approved institutional structure.</p>
+      </div>
+      <div class="grid-3">
+        <div class="department"><div class="icon">💻</div><h3>Computing and IT</h3><p>Digital knowledge and computing skills.</p></div>
+        <div class="department"><div class="icon">⚙️</div><h3>Engineering</h3><p>Technical learning and applied design.</p></div>
+        <div class="department"><div class="icon">🔬</div><h3>Applied Sciences</h3><p>Scientific learning and experimentation.</p></div>
+        <div class="department"><div class="icon">📊</div><h3>Business Studies</h3><p>Management and entrepreneurship.</p></div>
+        <div class="department"><div class="icon">📚</div><h3>Research</h3><p>Research methods and innovation.</p></div>
+        <div class="department"><div class="icon">🌍</div><h3>Community Engagement</h3><p>Learning and community participation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. STUDENT LIFE -->
+  <section id="student-life">
+    <div class="container">
+      <div class="section-title">
+        <span>Campus Experience</span>
+        <h2>Student Life</h2>
+        <p>
+          Showcase student clubs, sports, practical training, academic
+          activities and other confirmed campus opportunities here.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80" alt="Students collaborating">
+          <div class="card-body"><h3>Student Clubs</h3><p>Opportunities for teamwork, leadership and shared interests.</p></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=80" alt="Students studying">
+          <div class="card-body"><h3>Academic Community</h3><p>Learning, discussion and collaboration among students.</p></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80" alt="Students at an activity">
+          <div class="card-body"><h3>Campus Activities</h3><p>Share verified information about student events and activities.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. NEWS AND EVENTS -->
+  <section class="soft" id="news">
+    <div class="container">
+      <div class="section-title">
+        <span>Stay Informed</span>
+        <h2>News and Events</h2>
+        <p>Publish official announcements and confirmed institutional updates here.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card"><div class="card-body"><span class="news-date">ADMISSIONS NEWS</span><h3>Admission Announcements</h3><p>Updates about application periods, qualifications and deadlines.</p></div></article>
+        <article class="card"><div class="card-body"><span class="news-date">ACADEMIC NEWS</span><h3>Academic Activities</h3><p>Information about workshops, research and academic achievements.</p></div></article>
+        <article class="card"><div class="card-body"><span class="news-date">UPCOMING EVENTS</span><h3>Institute Events</h3><p>Share confirmed dates, venues and event participation details.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <span>Photo Collection</span>
+        <h2>Our Gallery</h2>
+        <p>Replace these sample images with genuine photos of your institution.</p>
+      </div>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" alt="Educational building">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in a group">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Laboratory equipment">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Technology equipment">
+        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=80" alt="Students in a learning environment">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Planning and teamwork">
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTACT US -->
+  <section class="soft" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <span>Get in Touch</span>
+        <h2>Contact Us</h2>
+        <p>Send an enquiry or contact the institute using its verified details.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-box">
+          <h3>Institutional Information</h3>
+          <div class="contact-item"><strong>Institution</strong>Kumalija Institute of Science and Technology</div>
+          <div class="contact-item"><strong>Address</strong>Add the verified campus address.</div>
+          <div class="contact-item"><strong>Email</strong>Add the official institutional email.</div>
+          <div class="contact-item"><strong>Telephone</strong>Add the official contact number.</div>
+          <div class="contact-item"><strong>Office Hours</strong>Add confirmed office hours.</div>
+        </div>
+        <form class="contact-box" id="contactForm">
+          <h3>Send an Enquiry</h3>
+          <label for="contactName">Full Name</label>
+          <input id="contactName" name="name" required placeholder="Your full name">
+          <label for="contactEmail">Email Address</label>
+          <input id="contactEmail" name="email" type="email" required placeholder="you@example.com">
+          <label for="contactSubject">Subject</label>
+          <select id="contactSubject" name="subject" required>
+            <option value="">Select a subject</option>
+            <option>Admissions</option><option>Academic Programmes</option>
+            <option>Fees</option><option>General Enquiry</option>
+          </select>
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" required placeholder="Write your message"></textarea>
+          <button class="btn btn-blue" type="submit">Send Enquiry</button>
+          <p class="form-message" id="contactMessageStatus" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 10. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>KIST</h3>
+        <p>Kumalija Institute of Science and Technology. Learning, knowledge and innovation for the future.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#programmes">Academic Programmes</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#departments">Departments</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Student Resources</h4>
+        <ul>
+          <li><a href="#student-life">Student Life</a></li>
+          <li><a href="#news">News and Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow KIST</h4>
+        <p>Add the institute's official social media links.</p>
+        <div class="socials">
+          <a href="#contact" aria-label="Facebook">Facebook</a>
+          <a href="#contact" aria-label="Instagram">Instagram</a>
+          <a href="#contact" aria-label="YouTube">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; <span id="year"></span> Kumalija Institute of Science and Technology. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- REGISTER AND LOGIN MODAL -->
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeAuth()" aria-label="Close">&times;</button>
+    <h2 id="authTitle">Student Login</h2>
+    <p id="authDescription">Sign in to your account.</p>
+
+    <form id="authForm">
+      <div id="nameField" hidden>
+        <label for="accountName">Full Name</label>
+        <input id="accountName" name="name" autocomplete="name" placeholder="Enter your full name">
+      </div>
+
+      <label for="accountEmail">Email Address</label>
+      <input id="accountEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+
+      <label for="accountPassword">Password</label>
+      <input id="accountPassword" name="password" type="password" minlength="8"
+        autocomplete="current-password" required placeholder="At least 8 characters">
+
+      <div id="confirmField" hidden>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password"
+          minlength="8" autocomplete="new-password" placeholder="Re-enter your password">
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-blue" type="submit" id="authSubmit">Login</button>
+        <button class="btn" style="background:#e9eef5;color:#102b50" type="button" onclick="closeAuth()">Cancel</button>
+      </div>
+      <p class="form-message" id="authMessage" role="status"></p>
+    </form>
+
+    <div class="switch-auth">
+      <span id="switchText">Don't have an account?</span>
+      <button type="button" id="switchButton" onclick="switchAuth()">Register</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => navLinks.classList.remove("open"));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const authModal = document.getElementById("authModal");
+const authForm = document.getElementById("authForm");
+let authMode = "login";
+
+function openAuth(mode) {
+  authMode = mode;
+  updateAuthView();
+  authModal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closeAuth() {
+  authModal.classList.remove("show");
+  document.body.style.overflow = "";
+  authForm.reset();
+  document.getElementById("authMessage").textContent = "";
+}
+
+function switchAuth() {
+  authMode = authMode === "login" ? "register" : "login";
+  updateAuthView();
+}
+
+function updateAuthView() {
+  const registering = authMode === "register";
+
+  document.getElementById("authTitle").textContent =
+    registering ? "Create Your Account" : "Student Login";
+
+  document.getElementById("authDescription").textContent =
+    registering ? "Complete the form to request an account." : "Enter your details to sign in.";
+
+  document.getElementById("nameField").hidden = !registering;
+  document.getElementById("confirmField").hidden = !registering;
+
+  document.getElementById("accountName").required = registering;
+  document.getElementById("confirmPassword").required = registering;
+  document.getElementById("accountPassword").autocomplete =
+    registering ? "new-password" : "current-password";
+
+  document.getElementById("authSubmit").textContent =
+    registering ? "Create Account" : "Login";
+
+  document.getElementById("switchText").textContent =
+    registering ? "Already have an account?" : "Don't have an account?";
+
+  document.getElementById("switchButton").textContent =
+    registering ? "Login" : "Register";
+
+  document.getElementById("authMessage").textContent = "";
+}
+
+authForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const email = document.getElementById("accountEmail").value.trim();
+  const password = document.getElementById("accountPassword").value;
+  const message = document.getElementById("authMessage");
+
+  if (password.length < 8) {
+    message.textContent = "Please use a password with at least 8 characters.";
+    return;
+  }
+
+  if (authMode === "register") {
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if (password !== confirm) {
+      message.textContent = "The passwords do not match.";
+      return;
+    }
+
+    message.textContent =
+      "Registration form validated. Connect a secure authentication backend to create your account.";
+  } else {
+    message.textContent =
+      "Login form ready. Connect a secure authentication backend to verify your account.";
+  }
+});
+
+document.getElementById("contactForm").addEventListener("submit", event => {
+  event.preventDefault();
+  document.getElementById("contactMessageStatus").textContent =
+    "The form is ready, but sending messages requires an email or form service to be connected.";
+});
+
+authModal.addEventListener("click", event => {
+  if (event.target === authModal) closeAuth();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeAuth();
+});
+</script>
+
+</body>
+</html>
